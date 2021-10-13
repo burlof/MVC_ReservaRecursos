@@ -232,5 +232,11 @@ a {
     padding: 4px;
 }
 
+.boton:hover {
+    background: #bce7df;
+    color: #009879;
+    font-weight: bold;
+}
+
 
 /*____________________________________________*/

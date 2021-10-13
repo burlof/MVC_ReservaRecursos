@@ -12,5 +12,5 @@ echo "<form action='index.php'>
         Email:<input type='text' name='email'><br><br>
         Contraseña:<input type='password' name='pass'><br>
         <input type='hidden' name='action' value='processLoginForm'>
-        <input type='submit'>
+        <input class='boton' type='submit'>
       </form>";

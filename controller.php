@@ -2,12 +2,13 @@
 
 include ("view.php");
 include ("models/user.php");
+include ("models/resource.php");
 include ("models/security.php");
 
 class Controller
 {
 
-    private $view, $user;
+    private $view, $user, $resource;
 
     /**
      * Constructor. Crea el objeto vista y los modelos
@@ -17,6 +18,7 @@ class Controller
         session_start(); // Si no se ha hecho en el index, claro
         $this->view = new View(); // Vistas
         $this->user = new User(); // Modelo de usuarios
+        $this->resource = new Resource();
     }
 
     /**
@@ -109,4 +111,19 @@ class Controller
             $this->view->show("loginForm", $data);
         }
     }
+
+    /**
+     * Muestra una lista de los recursos de la base de datos
+     */
+    public function selectResources()
+    {
+        $data['resources'] = $this->resource->getAll();
+        $this->view->show("showAllResources", $data);
+
+
+    }
+
+
+
+
 }
