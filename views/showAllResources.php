@@ -12,18 +12,20 @@
                 <th>Descripcion</th>
                 <th>Localizacion</th>
                 <th>Imagen</th>
+                <th>Acción 1</th>
+                <th>Acción 2</th>
             </tr>
         </thead>
         <tbody>
-            <tr>";
+            ";
     foreach ($resources as $res) {
-                echo "
+                echo "<tr>
                 <td>".$res['idResource']."</td>
                 <td>".$res['name']."</td>
                 <td>".$res['description']."</td>
                 <td>".$res['location']."</td>
                 <td>".$res['image']."</td>
-                ";
+                </tr>";
     }
     echo "</table>";
 

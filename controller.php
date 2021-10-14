@@ -3,12 +3,13 @@
 include ("view.php");
 include ("models/user.php");
 include ("models/resource.php");
+include ("models/timeslot.php");
 include ("models/security.php");
 
 class Controller
 {
 
-    private $view, $user, $resource;
+    private $view, $user, $resource, $timeslot;
 
     /**
      * Constructor. Crea el objeto vista y los modelos
@@ -19,6 +20,7 @@ class Controller
         $this->view = new View(); // Vistas
         $this->user = new User(); // Modelo de usuarios
         $this->resource = new Resource();
+        $this->timeslot = new TimeSlot();
     }
 
     /**
@@ -113,16 +115,31 @@ class Controller
     }
 
     /**
-     * Muestra una lista de los recursos de la base de datos
+     * Muestra una lista de todos los recursos de la base de datos
      */
     public function selectResources()
     {
         $data['resources'] = $this->resource->getAll();
         $this->view->show("showAllResources", $data);
-
-
     }
 
+    /**
+     * Muestra una lista de todos los tiempos de la base de datos
+     */
+    public function selectTimeSlots()
+    {
+        $data['timeslots'] = $this->timeslot->getAll();
+        $this->view->show("showAllTimeSlots", $data);
+    }
+
+    /**
+     * Muestra una lista de todos los usuarios de la base de datos
+     */
+    public function selectUsers()
+    {
+        $data['users'] = $this->user->getAll();
+        $this->view->show("showAllUsers", $data);
+    }
 
 
 

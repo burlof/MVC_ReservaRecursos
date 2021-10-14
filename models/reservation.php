@@ -2,7 +2,7 @@
 
 include_once("db.php");
 
-    class Resource
+    class Reservation
     {
 
     /**
@@ -16,7 +16,7 @@ include_once("db.php");
 
     public function getAll(){
         $resultArray = array();
-        $result = DB::dataQuery("SELECT * FROM resources");
+        $result = DB::dataQuery("SELECT * FROM reservations");
         if (count($result) > 0)
             return $result;
         else

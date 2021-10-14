@@ -1,6 +1,6 @@
 <?php
 
-include("db.php");
+include_once("db.php");
 
 class User
 {
@@ -63,5 +63,15 @@ class User
             return null;
 
     }
+
+    public function getAll(){
+        $resultArray = array();
+        $result = DB::dataQuery("SELECT * FROM users");
+        if (count($result) > 0)
+            return $result;
+        else
+            return null;
+    }
+
 }
 ?>

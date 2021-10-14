@@ -5,7 +5,9 @@ $controller = new Controller();
 // Miramos a ver si hay alguna acción pendiente de realizar
 if (!isset($_REQUEST['action'])) {
 // No la hay. Usamos la acción por defecto (mostrar el formulario de login)
-    $action = "showLoginForm";
+    //$action = "selectResources";
+    //$action = "selectTimeSlots";
+    $action = "selectUsers";
 } else {
 // S� la hay. La recuperamos.
     $action = $_REQUEST['action'];
