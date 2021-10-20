@@ -1,5 +1,4 @@
 <?php
-
     $resources = $data["resources"];
 
     echo "<h1>VISTA DE TODOS LOS RECURSOS</h1>
@@ -28,7 +27,7 @@
                 </tr>";
     }
     echo "</table>";
-
-
+    echo "<br><br><br>";
+    echo "<a href='index.php?action=showMenu'>Volver al Menú</a><br>";
 
 ?>

@@ -7,9 +7,10 @@ if (!isset($_REQUEST['action'])) {
 // No la hay. Usamos la acción por defecto (mostrar el formulario de login)
     //$action = "selectResources";
     //$action = "selectTimeSlots";
-    $action = "selectUsers";
+    //$action = "selectUsers";
+    $action = "showMenu";
 } else {
-// S� la hay. La recuperamos.
+// Si la hay. La recuperamos.
     $action = $_REQUEST['action'];
 }
 

@@ -84,6 +84,14 @@ class Controller
     }
 
     /**
+     * Muestra el menú de opciones del usuario
+     */
+    public function showMenu()
+    {
+        $this->view->show("mainMenu");
+    }
+
+    /**
      * Muestra el menú de opciones del usuario según la tabla de persmisos
      */
     public function showMainMenu()
@@ -140,6 +148,7 @@ class Controller
         $data['users'] = $this->user->getAll();
         $this->view->show("showAllUsers", $data);
     }
+
 
 
 

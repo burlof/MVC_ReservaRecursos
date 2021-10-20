@@ -26,5 +26,7 @@
                 </tr>";
     }
     echo "</table>";
+    echo "<br><br><br>";
+    echo "<a href='index.php?action=showMenu'>Volver al Menú</a><br>";
 
     ?>

@@ -7,7 +7,7 @@
     <table>
         <thead>
             <tr>
-                <th>idTimeSlot</th>
+                <th>id</th>
                 <th>Dia de la Semana</th>
                 <th>Fecha Inicio</th>
                 <th>Fecha Fin</th>
@@ -26,6 +26,8 @@
                 </tr>";
     }
     echo "</table>";
+    echo "<br><br><br>";
+    echo "<a href='index.php?action=showMenu'>Volver al Menú</a><br>";
 
 
 
