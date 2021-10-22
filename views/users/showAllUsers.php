@@ -23,6 +23,8 @@
                 <td>".$res['username']."</td>
                 <td>".$res['password']."</td>
                 <td>".$res['realname']."</td>
+                <td> Modificar </td>
+                <td> Borrar </td>
                 </tr>";
     }
     echo "</table>";

@@ -24,10 +24,12 @@
                 <td>".$res['description']."</td>
                 <td>".$res['location']."</td>
                 <td>".$res['image']."</td>
+                <td> Modificar </td>
+                <td> Borrar </td>
                 </tr>";
     }
     echo "</table>";
     echo "<br><br><br>";
-    echo "<a href='index.php?action=showMenu'>Volver al Menú</a><br>";
+    echo "<a href='index.php?controller=UsersController&action=showMenu'>Volver al Menú</a><br>";
 
 ?>

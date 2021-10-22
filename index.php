@@ -1,6 +1,23 @@
 <?php
-include("controller.php");
-$controller = new Controller();
+//include("controller.php");
+include_once("controllers/resourcesControl.php");
+include_once("controllers/usersControl.php");
+include_once("controllers/timeslotsControl.php");
+
+session_start();
+
+if (!isset($_REQUEST['controller'])) {
+        $controllerName = "UsersControl";
+    } else {
+        $controllerName = $_REQUEST['controller'];
+    }
+    
+
+//$controller = new Controller();
+//$controller = new ResourcesControl();
+$controller = new $controllerName();
+//$controller = new TimeSlotsControl();
+
 
 // Miramos a ver si hay alguna acción pendiente de realizar
 if (!isset($_REQUEST['action'])) {

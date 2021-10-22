@@ -16,7 +16,7 @@ class Controller
      */
     public function __construct()
     {
-        session_start(); // Si no se ha hecho en el index, claro
+        //session_start(); // Si no se ha hecho en el index, claro
         $this->view = new View(); // Vistas
         $this->user = new User(); // Modelo de usuarios
         $this->resource = new Resource();
@@ -128,7 +128,7 @@ class Controller
     public function selectResources()
     {
         $data['resources'] = $this->resource->getAll();
-        $this->view->show("showAllResources", $data);
+        $this->view->show("resources/showAllResources", $data);
     }
 
     /**
@@ -137,7 +137,7 @@ class Controller
     public function selectTimeSlots()
     {
         $data['timeslots'] = $this->timeslot->getAll();
-        $this->view->show("showAllTimeSlots", $data);
+        $this->view->show("timeslots/showAllTimeSlots", $data);
     }
 
     /**
@@ -146,7 +146,7 @@ class Controller
     public function selectUsers()
     {
         $data['users'] = $this->user->getAll();
-        $this->view->show("showAllUsers", $data);
+        $this->view->show("users/showAllUsers", $data);
     }
 
 

@@ -23,6 +23,8 @@
                 <td>".$res['dayOfWeek']."</td>
                 <td>".$res['startTime']."</td>
                 <td>".$res['endTime']."</td>
+                <td> Modificar </td>
+                <td> Borrar </td>
                 </tr>";
     }
     echo "</table>";

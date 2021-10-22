@@ -9,10 +9,12 @@ class User
      * Constructor de la clase.
      * Crea una conexión con la base de datos y la asigna a la variable $this->db
      */
+    /*
     public function __construct()
     {
        DB::createConnection(); 
     }
+    */
 
     /**
      * Comprueba si un email y una password pertenecen a algún usuario de la base  de datos.
@@ -64,6 +66,7 @@ class User
 
     }
 
+    /*
     public function getAll(){
         $resultArray = array();
         $result = DB::dataQuery("SELECT * FROM users");
@@ -71,6 +74,12 @@ class User
             return $result;
         else
             return null;
+    }
+    */
+
+    public static function getAll(){
+        $result = DB::dataQuery("SELECT * FROM users");
+        return $result;
     }
 
 }
