@@ -21,7 +21,7 @@ class UsersControl{
     {
         $this->view->show("mainMenu");
     }
-    
+
 
      /**
      * Muestra una lista de todos los recursos de la base de datos
@@ -30,6 +30,7 @@ class UsersControl{
     {
         $data['users'] = User::getAll();
         $this->view->show("users/showAllUsers", $data);
+        echo "Hola, estoy pasando por selectUsers";
     }
 
 

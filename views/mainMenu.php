@@ -5,9 +5,9 @@ echo "Bienvenido, @nombre de usuario<br>";
 echo "<br>";
 echo "MENÚ DE OPCIONES<br>";
 echo "<br><br><br>";
-echo "<a href='index.php?controller=UsersController&action=selectResources'>Mantenimiento de recursos</a><br>";
-echo "<a href='index.php?controller=UsersController&action=selectTimeSlots'>Mantenimiento de tramos horarios</a><br>";
-echo "<a href='index.php?controller=UsersController&action=selectUsers'>Mantenimiento de usuarios</a><br>";
+echo "<a href='index.php?controller=ResourcesControl&action=selectResources'>Mantenimiento de recursos</a><br>";
+echo "<a href='index.php?controller=TimeSlotsControl&action=selectTimeSlots'>Mantenimiento de tramos horarios</a><br>";
+echo "<a href='index.php?controller=UsersControl&action=selectUsers'>Mantenimiento de usuarios</a><br>";
 
 
 /*
@@ -16,7 +16,7 @@ foreach ($data['permissions'] as $permission) {
 }*/
 
 echo "<br><br><br>";
-echo "<a href='index.php?action=closeSession'>Cerrar sesión</a>";
+echo "<a href='index.php?controller=UsersControl&action=closeSession'>Cerrar sesión</a>";
 
 
 ?>

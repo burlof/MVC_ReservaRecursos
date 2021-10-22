@@ -54,7 +54,11 @@ class DB {
      * @return integer El número de filas insertadas, modificadas o borradas por la sentencia SQL (0 si no produjo ningún efecto).
      */
     public static function dataManipulation($sql) {
-        self::$connection->query($sql);
-        return self::$connection->affected_rows;
+        if (self::$connection->query($sql)) {
+            return self::$connection->affected_rows;
+        }
+        else {
+            return 0;  // Error en la instrucción SQL
+        }
     }
 }
