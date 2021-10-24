@@ -2,6 +2,10 @@
 
     $users = $data["users"];
 
+    if (isset($data['text'])) {
+        echo "<div class='error'>".$data['text']."</div>";
+    }
+
     echo "<h1>VISTA DE TODOS LOS USUARIOS</h1>
 
     <table>
@@ -24,7 +28,7 @@
                 <td>".$res['password']."</td>
                 <td>".$res['realname']."</td>
                 <td> Modificar </td>
-                <td> Borrar </td>
+                <td> <a href='index.php?controller=UsersControl&action=deleteUsers&idUser=".$res['idUser']."'> Borrar</a></t d>
                 </tr>";
     }
     echo "</table>";

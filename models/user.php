@@ -82,5 +82,26 @@ class User
         return $result;
     }
 
+    public static function deleteID(){
+        $idUser = $_REQUEST["idUser"];
+        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
+        //printf("Aqui viene el recurso: ".$idUser);
+        //echo "DELETE FROM users WHERE idUser = '$idUser'";
+        $result = DB::dataManipulation("DELETE FROM users WHERE idUser = '$idUser'");
+        return $result;
+    }
+
+
+    // Mira si un recurso pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+    public static function hasReservationsUsers() {
+        $idUser = $_REQUEST["idUser"];
+        $result = DB::dataQuery("SELECT * FROM reservations WHERE idUser = '$idUser'");
+        if($result != null && count($result)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
 ?>

@@ -33,6 +33,24 @@ class UsersControl{
         echo "Hola, estoy pasando por selectUsers";
     }
 
+    /**
+     * Elimina un usuario por su id de la base de datos
+     */
+    public function deleteUsers(){
+        $hasReservations = User::hasReservationsUsers();
+        $text = "";
+        if ($hasReservations) {
+            $text = "No puedes borrar ese usuario porque tiene reservas. ";
+        }
+        $result = User::deleteID();
+        if ($result == 0) {
+            $text = $text . "Ha fallado el borrado";
+        } else {
+            $text = $text . "Borrado con éxito";
+        }
+        $this->selectUsers($text);
+    }
+
 
 
 
