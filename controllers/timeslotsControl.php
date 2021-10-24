@@ -23,6 +23,24 @@ class TimeSlotsControl{
         $this->view->show("timeslots/showAllTimeSlots", $data);
     }
 
+    /**
+     * Elimina un timeslot por su id de la base de datos
+     */
+    public function deleteTimeSlots(){
+        $hasReservations = TimeSlot::hasReservationsTimeSlots();
+        $text = "";
+        if ($hasReservations) {
+            $text = "No puedes borrar esa fecha porque tiene reservas. ";
+        }
+        $result = TimeSlot::deleteID();
+        if ($result == 0) {
+            $text = $text . "Ha fallado el borrado";
+        } else {
+            $text = $text . "Borrado con éxito";
+        }
+        $this->selectTimeSlots($text);
+    }
+
 
 
 

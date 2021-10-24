@@ -85,7 +85,7 @@ class User
     public static function deleteID(){
         $idUser = $_REQUEST["idUser"];
         //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
-        //printf("Aqui viene el recurso: ".$idUser);
+        //printf("Aqui viene el user: ".$idUser);
         //echo "DELETE FROM users WHERE idUser = '$idUser'";
         $result = DB::dataManipulation("DELETE FROM users WHERE idUser = '$idUser'");
         return $result;

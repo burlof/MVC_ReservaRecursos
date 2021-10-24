@@ -24,7 +24,7 @@
                 <td>".$res['startTime']."</td>
                 <td>".$res['endTime']."</td>
                 <td> Modificar </td>
-                <td> Borrar </td>
+                <td> <a href='index.php?controller=TimeSlotsControl&action=deleteTimeSlots&idTimeSlot=".$res['idTimeSlot']."'> Borrar</a></t d>
                 </tr>";
     }
     echo "</table>";

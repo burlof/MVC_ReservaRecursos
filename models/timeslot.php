@@ -32,6 +32,27 @@ include_once("db.php");
         return $result;
     }
 
+    public static function deleteID(){
+        $idTimeSlot = $_REQUEST["idTimeSlot"];
+        //printf("Aqui viene el request: ".$_REQUEST["idTimeSlot"]."<br>");
+        //printf("Aqui viene el timeslot: ".$idTimeSlot);
+        //echo "DELETE FROM timeslots WHERE idTimeSlot = '$idTimeSlot'";
+        $result = DB::dataManipulation("DELETE FROM timeslots WHERE idTimeSlot = '$idTimeSlot'");
+        return $result;
+    }
+    
+
+    // Mira si un recurso pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+    public static function hasReservationsTimeSlots() {
+        $idTimeSlot = $_REQUEST["idTimeSlot"];
+        $result = DB::dataQuery("SELECT * FROM timeslots WHERE idTimeSlot = '$idTimeSlot'");
+        if($result != null && count($result)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
 
