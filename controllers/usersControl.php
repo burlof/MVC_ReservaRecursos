@@ -30,7 +30,7 @@ class UsersControl{
     {
         $data['users'] = User::getAll();
         $this->view->show("users/showAllUsers", $data);
-        echo "Hola, estoy pasando por selectUsers";
+        //echo "Hola, estoy pasando por selectUsers";
     }
 
     /**
