@@ -5,17 +5,6 @@ include_once("db.php");
     class Resource
     {
 
-    /*
-        public function getAll(){
-            $resultArray = array();
-            $result = DB::dataQuery("SELECT * FROM resources");
-            if (count($result) > 0)
-                return $result;
-            else
-                return null;
-        }
-    */
-
     public static function getAll(){
         $result = DB::dataQuery("SELECT * FROM resources");
         return $result;
@@ -41,6 +30,22 @@ include_once("db.php");
         }
     }
 
+    public static function updateID(){
+        $idResource = $_REQUEST["idResource"];
+        //printf("Aqui viene el request: ".$_REQUEST["idResource"]."<br>");
+        //printf("Aqui viene el recurso: ".$idResource);
+        //echo "DELETE FROM resources WHERE idResource = '$idResource'";
+        $result = DB::dataManipulation("UPDATE FROM resources WHERE idResource = '$idResource'");
+        return $result;
+    }
+
+    public static function buscar(/*$textoBusqueda/*-->Pasar aquí parámetro*/){
+        $result = DB::dataQuery("SELECT * FROM resources WHERE idResource LIKE '%$textoBusqueda%' 
+                                                            OR name LIKE '%$textoBusqueda%'
+                                                            OR description LIKE '%$textoBusqueda%'
+                                                            OR location LIKE '%$textoBusqueda%'");
+        return $result;
+    }
 
 
 

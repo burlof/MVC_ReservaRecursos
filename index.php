@@ -3,6 +3,7 @@
 include_once("controllers/resourcesControl.php");
 include_once("controllers/usersControl.php");
 include_once("controllers/timeslotsControl.php");
+include_once("controllers/reservationsControl.php");
 
 session_start();
 

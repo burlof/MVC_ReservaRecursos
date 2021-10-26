@@ -8,6 +8,7 @@ echo "<br>";
 echo "<a href='index.php?controller=ResourcesControl&action=selectResources'>Mantenimiento de recursos</a><br><br>";
 echo "<a href='index.php?controller=TimeSlotsControl&action=selectTimeSlots'>Mantenimiento de tramos horarios</a><br><br>";
 echo "<a href='index.php?controller=UsersControl&action=selectUsers'>Mantenimiento de usuarios</a><br><br>";
+echo "<a href='index.php?controller=ReservationsControl&action=selectReservations'>Mantenimiento de reservas</a><br><br>";
 
 
 /*

@@ -1,9 +1,9 @@
 <?php
-    $resources = $data["resources"];
+    $resources = $data["reservations"];
 
     //VARIABLES
-    $ruta_Resources_Control="index.php?controller=ResourcesControl&action=deleteResources&idResource=";
-    $ruta_Resources_Control_Update="index.php?controller=ResourcesControl&action=updateResources&idResource=";
+    $ruta_Resources_Control="index.php?controller=ReservationsControl&action=deleteResources&idResource=";
+    $ruta_Resources_Control_Update="index.php?controller=ReservationsControl&action=updateResources&idResource=";
     $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
     $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
     $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
@@ -23,22 +23,22 @@
 
     /*BUSCAR RECURSOS */ //AÑADIR PARAMETRO: $textoBusqueda = $_REQUEST["textoBusqueda"];
     echo "<input type='text' name='textoBusqueda'>";
-    echo "<a href='index.php?controller=ResourcesControl&action=searchResources'> <img src='$ruta_Search'$estilo_Button> </a>";
+    echo "<a href='index.php?controller=ReservationsControl&action=searchResources'> <img src='$ruta_Search'$estilo_Button> </a>";
 
     /*AÑADIR RECURSOS */
     echo "<a href='index.php?action=showMenu'> <img src='$ruta_Add'$estilo_Button> </a><br>";
 
     /*TÍTULO VISTA */
-    echo "<h1>VISTA DE TODOS LOS RECURSOS</h1>
+    echo "<h1>VISTA DE TODAS LAS RESERVAS</h1>
     
     <table>
         <thead>
             <tr>
-                <th>id</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Localización</th>
-                <th>Imagen</th>
+                <th>idResource</th>
+                <th>idUser</th>
+                <th>idTimeSlot</th>
+                <th>Date</th>
+                <th>Remarks</th>
                 <th>Editar</th>
                 <th>Borrar</th>
             </tr>
@@ -48,10 +48,10 @@
     foreach ($resources as $res) {
                 echo "<tr>
                 <td>".$res['idResource']."</td>
-                <td>".$res['name']."</td>
-                <td>".$res['description']."</td>
-                <td>".$res['location']."</td>
-                <td><img src='$ruta_Imagen_Recurso".$res['image']."'$estilo_Recurso></td>
+                <td>".$res['idUser']."</td>
+                <td>".$res['idTimeSlot']."</td>
+                <td>".$res['date']."</td>
+                <td>".$res['remarks']."</td>
                 <td> <a href='".$ruta_Resources_Control_Update."".$res['idResource']."'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
                 <td> <a href='".$ruta_Resources_Control."".$res['idResource']."'> <img src='$ruta_Delete'$estilo_Button> </a></t d>
                 </tr>";
