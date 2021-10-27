@@ -5,11 +5,22 @@ include_once("db.php");
     class Resource
     {
 
+    /**
+     * Recupera de la Base de Datos todos los datos de la tabla recursos
+     */
     public static function getAll(){
         $result = DB::dataQuery("SELECT * FROM resources");
         return $result;
     }
 
+    public static function get($idResource) {
+        $resource = DB::dataQuery("SELECT * FROM resources WHERE idResource = '$idResource'");        
+        return $resource;
+    }
+
+    /**
+     * Elimina en la Base de Datos un recurso de la tabla recursos por su id
+     */
     public static function deleteID(){
         $idResource = $_REQUEST["idResource"];
         //printf("Aqui viene el request: ".$_REQUEST["idResource"]."<br>");
@@ -19,7 +30,9 @@ include_once("db.php");
         return $result;
     }
 
-    // Mira si un recurso pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+    /**
+     * Comprueba si un recurso pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+     */
     public static function hasReservations() {
         $idResource = $_REQUEST["idResource"];
         $result = DB::dataQuery("SELECT * FROM reservations WHERE idResource = '$idResource'");
@@ -30,22 +43,25 @@ include_once("db.php");
         }
     }
 
-    public static function updateID(){
+
+    /**
+     * Actualiza en la Base de Datos un recurso de la tabla recursos por su id
+     */
+    public static function update(){
         $idResource = $_REQUEST["idResource"];
+        $name = $_REQUEST["name"];
+        $description = $_REQUEST["description"];
+        $location = $_REQUEST["location"];
+        $image = $_REQUEST["image"];
         //printf("Aqui viene el request: ".$_REQUEST["idResource"]."<br>");
         //printf("Aqui viene el recurso: ".$idResource);
-        //echo "DELETE FROM resources WHERE idResource = '$idResource'";
-        $result = DB::dataManipulation("UPDATE FROM resources WHERE idResource = '$idResource'");
+        //echo "UPDATE FROM resources WHERE idResource = '$idResource'";
+        $result = DB::dataManipulation("UPDATE resources 
+        SET name='$name', description='$description', location='$location', image='$image'
+        WHERE idResource = '$idResource'");
         return $result;
     }
 
-    public static function buscar(/*$textoBusqueda/*-->Pasar aquí parámetro*/){
-        $result = DB::dataQuery("SELECT * FROM resources WHERE idResource LIKE '%$textoBusqueda%' 
-                                                            OR name LIKE '%$textoBusqueda%'
-                                                            OR description LIKE '%$textoBusqueda%'
-                                                            OR location LIKE '%$textoBusqueda%'");
-        return $result;
-    }
 
 
 

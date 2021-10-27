@@ -6,7 +6,6 @@
     $ruta_TimeSlots_Control="index.php?controller=TimeSlotsControl&action=deleteTimeSlots&idTimeSlot=";
     $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
     $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
-    $ruta_Search = "http://localhost/ReservaRecursos/assets/images/buttons/search.png";
     $estilo_Button = "style=width:25px;height:25px;";
 
     if (isset($data['text'])) {
@@ -16,7 +15,6 @@
 
     echo "<a href='index.php?action=showMenu'>Volver al Menú</a><br>";
     echo "<br><br>";
-    echo "<a href='index.php?action=showMenu'> <img src='$ruta_Search'$estilo_Button> </a><br>";
 
     echo "<h1>VISTA DE TODOS LOS HORARIOS</h1>
 

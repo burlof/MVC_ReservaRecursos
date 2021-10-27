@@ -52,16 +52,6 @@ class ReservationsControl{
         $this->view->show("reservations/updateReservations", $data);
     }
 
-    /**
-     * Busca un recurso de la base de datos
-     */
-    public function searchReservations($text = null)
-    {
-        $data['reservations'] = Reservation::buscar();
-        if ($text != null) $data['text'] = $text;
-        $this->view->show("reservations/showAllReservations", $data);
-    }
-
 
 
 

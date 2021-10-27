@@ -7,7 +7,6 @@
     $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
     $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
     $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
-    $ruta_Search = "http://localhost/ReservaRecursos/assets/images/buttons/search.png";
     $ruta_Add = "http://localhost/ReservaRecursos/assets/images/buttons/add.png";
     $estilo_Recurso = "style=width:60px;height:60px;";
     $estilo_Button = "style=width:25px;height:25px;";
@@ -20,10 +19,6 @@
     /*VOLVER AL MENÚ */
     echo "<a href='index.php?controller=UsersControl&action=showMenu'>Volver al Menú</a><br>";
     echo "<br><br>";
-
-    /*BUSCAR RECURSOS */ //AÑADIR PARAMETRO: $textoBusqueda = $_REQUEST["textoBusqueda"];
-    echo "<input type='text' name='textoBusqueda'>";
-    echo "<a href='index.php?controller=ReservationsControl&action=searchResources'> <img src='$ruta_Search'$estilo_Button> </a>";
 
     /*AÑADIR RECURSOS */
     echo "<a href='index.php?action=showMenu'> <img src='$ruta_Add'$estilo_Button> </a><br>";

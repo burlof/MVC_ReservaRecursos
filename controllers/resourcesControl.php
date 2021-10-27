@@ -43,24 +43,25 @@ class ResourcesControl{
         $this->selectResources($text);
     }
 
+
+    /**
+     * Muestra el formulario del recurso seleccionado para ser modificado
+     */
+    public function edit() {
+        $data['resources'] = Resource::get($_REQUEST['idResource']);
+        $this->view->show("resources/updateResources", $data);
+
+    }
+
     /**
      * Actualiza/Modifica un recurso por su id de la base de datos
      */
     public function updateResources(){
-
+        Resource::update();
         $data['resources'] = Resource::getAll();
-        $this->view->show("resources/updateResources", $data);
-    }
-
-    /**
-     * Busca un recurso de la base de datos
-     */
-    public function searchResources($text = null)
-    {
-        $data['resources'] = Resource::buscar();
-        if ($text != null) $data['text'] = $text;
         $this->view->show("resources/showAllResources", $data);
     }
+
 
 
 

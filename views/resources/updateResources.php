@@ -1,5 +1,6 @@
 <?php
-    $resources = $data["resources"];
+    include_once ("models/resource.php");
+    $res = $data["resources"][0];
 
     //VARIABLES
     $ruta_Resources_Control="index.php?controller=ResourcesControl&action=deleteResources&idResource=";
@@ -15,35 +16,29 @@
 
     echo "<a href='index.php?controller=UsersControl&action=showMenu'>Volver al Menú</a><br>";
     echo "<br><br>";
-    echo "<a href='index.php?action=showMenu'> <img src='$ruta_Editar'$estilo_Button> </a>";
+    echo "<a href='index.php?controller=ResourcesControl&action=selectResources'>Volver a Recursos</a><br>";
+    echo "<br><br>";
 
-    echo "<h2>MODIFICACIÓN DE LOS RECURSOS</h2>
+    echo "<h2>MODIFICACIÓN DE RECURSO</h2>
     
-    <label> ID: </label><input type='text' name='id' value='";
-    foreach ($resources as $res) {
-                $res['idResource'];
-    }
-    "'><br>
+    <form action='index.php' method='GET'>
+    <input type='hidden' name='controller' value='ResourcesControl'>
+    <input type='hidden' name='action' value='updateResources'>";
 
-    <label> Name: </label><input type='text' name='name' value='";
-    foreach ($resources as $res) {
-                $res['name'];
-    }
-    "'><br>";
+    echo "<input type='hidden' name='idResource' value='".$res['idResource']."'><br>
 
+    <label> Name: </label><input type='text' name='name' value='".$res['name']."'><br>
 
-    /*
-    foreach ($resources as $res) {
-                echo "<tr>
-                <td>".$res['idResource']."</td>
-                <td>".$res['name']."</td>
-                <td>".$res['description']."</td>
-                <td>".$res['location']."</td>
-                <td><img src='$ruta_Imagen_Recurso".$res['image']."'$estilo_Recurso></td>
-                </tr>";
-    }
-    echo "</table>";
-    */
+    <label> Description: </label><input type='text' name='description' value='".$res['description']."'><br>
+
+    <label> Location: </label><input type='text' name='location' value='".$res['location']."'><br>
+
+    <label> Image: </label><input type='text' name='image' value='".$res['image']."'><br>
+    
+    <button type='submit'>Aceptar</button>
+
+    </form>";
+    
     echo "<br><br><br>";
     echo "<a href='index.php?controller=UsersControl&action=showMenu'>Volver al Menú</a><br>";
 
