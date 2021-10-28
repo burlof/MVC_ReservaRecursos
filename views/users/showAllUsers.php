@@ -4,6 +4,7 @@
 
     //VARIABLES
     $ruta_Users_Control="index.php?controller=UsersControl&action=deleteUsers&idUser=";
+    $ruta_Users_Control_Update="index.php?controller=UsersControl&action=edit&idUser=";
     $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
     $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
     $estilo_Button = "style=width:25px;height:25px;";
@@ -37,7 +38,7 @@
                 <td>".$res['username']."</td>
                 <td>".$res['password']."</td>
                 <td>".$res['realname']."</td>
-                <td> <a > <img src='$ruta_Editar'$estilo_Button> </a> </td>
+                <td> <a href='".$ruta_Users_Control_Update."".$res['idUser']."'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
                 <td> <a href='".$ruta_Users_Control."".$res['idUser']."'> <img src='$ruta_Delete'$estilo_Button> </a></t d>
                 </tr>";
     }

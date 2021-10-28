@@ -43,6 +43,26 @@ include_once("db.php");
         }
     }
 
+    /**
+     * Inserta en la Base de Datos un recurso en la tabla recursos
+     */
+    public static function insert(){
+        $idResource = $_REQUEST["idResource"];
+        $name = $_REQUEST["name"];
+        $description = $_REQUEST["description"];
+        $location = $_REQUEST["location"];
+        $image = $_REQUEST["image"];
+
+        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
+        //printf("Aqui viene el user: ".$idUser."<br>");
+        echo "INSERT INTO resources 
+        VALUES idResource='$idResource', name='$name', description='$description', location='$location', image='$image' ";
+        
+        $result = DB::dataManipulation("INSERT INTO resources 
+        VALUES idResource='$idResource', name='$name', description='$description', location='$location', image='$image'");
+        return $result;
+    }
+
 
     /**
      * Actualiza en la Base de Datos un recurso de la tabla recursos por su id
@@ -53,9 +73,7 @@ include_once("db.php");
         $description = $_REQUEST["description"];
         $location = $_REQUEST["location"];
         $image = $_REQUEST["image"];
-        //printf("Aqui viene el request: ".$_REQUEST["idResource"]."<br>");
-        //printf("Aqui viene el recurso: ".$idResource);
-        //echo "UPDATE FROM resources WHERE idResource = '$idResource'";
+
         $result = DB::dataManipulation("UPDATE resources 
         SET name='$name', description='$description', location='$location', image='$image'
         WHERE idResource = '$idResource'");

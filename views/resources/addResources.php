@@ -1,9 +1,8 @@
 <?php
     include_once ("models/resource.php");
-    $res = $data["resources"][0];
+    //$res = $data["resources"][0];
 
     //VARIABLES
-    $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
     $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
     $estilo_Recurso = "style=width:60px;height:60px;";
     $estilo_Button = "style=width:25px;height:25px;";
@@ -18,21 +17,21 @@
     echo "<a href='index.php?controller=ResourcesControl&action=selectResources'>Volver a Recursos</a><br>";
     echo "<br><br>";
 
-    echo "<h2>MODIFICACIÓN DE RECURSO</h2>
+    echo "<h2>INSERCIÓN DE RECURSO</h2>
     
     <form action='index.php' method='GET'>
     <input type='hidden' name='controller' value='ResourcesControl'>
-    <input type='hidden' name='action' value='updateResources'>";
+    <input type='hidden' name='action' value='insertResources'>";
 
-    echo "<input type='hidden' name='idResource' value='".$res['idResource']."'><br>
+    echo "<label> ID: </label><input type='text' name='idResource' placeholder='ID'><br>";
 
-    <label> Name: </label><input type='text' name='name' value='".$res['name']."'><br>
+   echo "<label> Name: </label><input type='text' name='name' placeholder='Nombre'><br>
 
-    <label> Description: </label><input type='text' name='description' value='".$res['description']."'><br>
+    <label> Description: </label><input type='text' name='description' placeholder='Descripción'><br>
 
-    <label> Location: </label><input type='text' name='location' value='".$res['location']."'><br>
+    <label> Location: </label><input type='text' name='location' placeholder='Ubicación'><br>
 
-    <label> Image: </label><input type='text' name='image' value='".$res['image']."'><br>
+    <label> Image: </label><input type='text' name='image' placeholder='Ruta Imagen'><br>
     
     <button type='submit'>Aceptar</button>
 

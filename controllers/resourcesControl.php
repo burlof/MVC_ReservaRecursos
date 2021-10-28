@@ -54,6 +54,23 @@ class ResourcesControl{
     }
 
     /**
+     * Miestra una nueva vista para insertar recursos en la base de datos
+     */
+    public function showInsert()
+    {
+        $this->view->show("resources/addResources");
+    }
+
+    /**
+     * Inserta un nuevo recurso en la base de datos
+     */
+    public function insertResources(){
+        Resource::insert();
+        $data['resources'] = Resource::getAll();
+        $this->view->show("resources/showAllResources", $data);
+    }
+
+    /**
      * Actualiza/Modifica un recurso por su id de la base de datos
      */
     public function updateResources(){

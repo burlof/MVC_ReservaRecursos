@@ -71,6 +71,11 @@ class User
         return $result;
     }
 
+    public static function get($idUser) {
+        $user = DB::dataQuery("SELECT * FROM users WHERE idUser = '$idUser'");        
+        return $user;
+    }
+
     public static function deleteID(){
         $idUser = $_REQUEST["idUser"];
         //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
@@ -92,5 +97,36 @@ class User
         }
     }
 
-}
+    /**
+     * Actualiza en la Base de Datos un recurso de la tabla recursos por su id
+     */
+    public static function update(){
+        $idUser = $_REQUEST["idUser"];
+        $username = $_REQUEST["username"];
+        $password = $_REQUEST["password"];
+        $realname = $_REQUEST["realname"];
+
+        printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
+        printf("Aqui viene el user: ".$idUser."<br>");
+        echo "UPDATE users 
+        SET username='$username', password='$password', realname='$realname'
+        WHERE idUser = '$idUser'";
+
+        $result = DB::dataManipulation("UPDATE users 
+        SET username='$username', password='$password', realname='$realname'
+        WHERE idUser = '$idUser'");
+        return $result;
+    }
+
+
+
+
+
+
+
+
+    
+
+
+}//END CLASS USERS
 ?>

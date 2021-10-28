@@ -4,6 +4,7 @@
     //VARIABLES
     $ruta_Resources_Control="index.php?controller=ResourcesControl&action=deleteResources&idResource=";
     $ruta_Resources_Control_Update="index.php?controller=ResourcesControl&action=edit&idResource=";
+    $ruta_Resources_Control_Insert="index.php?controller=ResourcesControl&action=showInsert";
     $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
     $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
     $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
@@ -21,7 +22,7 @@
     echo "<br><br>";
 
     /*AÑADIR RECURSOS */
-    echo "<a href='index.php?action=showMenu'>  Añadir <img src='$ruta_Add'$estilo_Button></a><br>";
+    echo "<a href='".$ruta_Resources_Control_Insert."'>  Añadir <img src='$ruta_Add'$estilo_Button></a><br>";
 
     /*TÍTULO VISTA */
     echo "<h1>VISTA DE TODOS LOS RECURSOS</h1>

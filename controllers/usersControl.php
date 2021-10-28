@@ -30,7 +30,6 @@ class UsersControl{
     {
         $data['users'] = User::getAll();
         $this->view->show("users/showAllUsers", $data);
-        //echo "Hola, estoy pasando por selectUsers";
     }
 
     /**
@@ -49,6 +48,24 @@ class UsersControl{
             $text = $text . "Borrado con éxito";
         }
         $this->selectUsers($text);
+    }
+
+    /**
+     * Muestra el formulario del usuario seleccionado para ser modificado
+     */
+    public function edit() {
+        $data['users'] = User::get($_REQUEST['idUser']);
+        $this->view->show("users/updateUsers", $data);
+
+    }
+
+    /**
+     * Actualiza/Modifica un usuario por su id de la base de datos
+     */
+    public function updateUsers(){
+        User::update();
+        $data['users'] = User::getAll();
+        $this->view->show("users/showAllUsers", $data);
     }
 
 
