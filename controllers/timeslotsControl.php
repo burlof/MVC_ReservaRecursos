@@ -41,6 +41,42 @@ class TimeSlotsControl{
         $this->selectTimeSlots($text);
     }
 
+    /**
+     * Muestra el formulario del horario seleccionado para ser modificado
+     */
+    public function edit() {
+        $data['timeslots'] = TimeSlot::get($_REQUEST['idTimeSlot']);
+        $this->view->show("timeslots/updateTimeSlots", $data);
+
+    }
+
+    /**
+     * Muestra una nueva vista para insertar recursos en la base de datos
+     */
+    public function showInsert()
+    {
+        $this->view->show("timeslots/addTimeSlots");
+    }
+
+    /**
+     * Inserta un nuevo recurso en la base de datos
+     */
+    public function insertTimeSlots(){
+        TimeSlot::insert();
+        $data['timeslots'] = TimeSlot::getAll();
+        $this->view->show("timeslots/showAllTimeSlots", $data);
+    }
+
+
+    /**
+     * Actualiza/Modifica un recurso por su id de la base de datos
+     */
+    public function updateTimeSlots(){
+        TimeSlot::update();
+        $data['timeslots'] = TimeSlot::getAll();
+        $this->view->show("timeslots/showAllTimeSlots", $data);
+    }
+
 
 
 

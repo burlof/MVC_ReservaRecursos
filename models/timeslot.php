@@ -79,6 +79,39 @@ include_once("db.php");
         }
     }
 
+    /**
+     * Inserta en la Base de Datos un horario en la tabla timeslots
+     */
+    public static function insert(){
+        $dayOfWeek = $_REQUEST["dayOfWeek"];
+        $startTime = $_REQUEST["startTime"];
+        $endTime = $_REQUEST["endTime"];
+
+        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
+        //printf("Aqui viene el user: ".$idUser."<br>");
+        //echo "INSERT INTO timeslots (name, description, location, image)
+        //VALUES (dayOfWeek='$dayOfWeek', startTime='$startTime', endTime='$endTime')";
+        
+        $result = DB::dataManipulation("INSERT INTO timeslots (dayOfWeek, startTime, endTime)
+        VALUES ('$dayOfWeek','$startTime','$endTime')");
+        return $result;
+    }
+
+    /**
+     * Actualiza en la Base de Datos un recurso de la tabla recursos por su id
+     */
+    public static function update(){
+        $idTimeSlot = $_REQUEST["idTimeSlot"];
+        $dayOfWeek = $_REQUEST["dayOfWeek"];
+        $startTime = $_REQUEST["startTime"];
+        $endTime = $_REQUEST["endTime"];
+
+        $result = DB::dataManipulation("UPDATE timeslots 
+        SET dayOfWeek='$dayOfWeek', startTime='$startTime', endTime='$endTime'
+        WHERE idTimeSlot = '$idTimeSlot'");
+        return $result;
+    }
+
 
 
 

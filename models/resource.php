@@ -62,7 +62,7 @@ include_once("db.php");
         //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
         //printf("Aqui viene el user: ".$idUser."<br>");
         echo "INSERT INTO resources (name, description, location, image)
-        VALUES (idResource='$idResource', name='$name', description='$description', location='$location', image='$image')";
+        VALUES (name='$name', description='$description', location='$location', image='$image')";
         
         $result = DB::dataManipulation("INSERT INTO resources (name, description, location, image)
         VALUES ('$name','$description','$location','$image')");
