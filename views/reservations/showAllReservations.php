@@ -1,5 +1,10 @@
 <?php
-    $resources = $data["reservations"];
+    include_once ("models/resource.php");
+    include_once ("models/user.php");
+    include_once ("models/timeslot.php");
+
+
+    $reservations = $data["reservations"];
 
     //VARIABLES
     $ruta_Resources_Control="index.php?controller=ReservationsControl&action=deleteResources&idResource=";
@@ -29,10 +34,11 @@
     <table>
         <thead>
             <tr>
-                <th>idResource</th>
-                <th>idUser</th>
-                <th>idTimeSlot</th>
-                <th>Date</th>
+                <th>Recurso</th>
+                <th>Usuario</th>
+                <th>Día Semana</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
                 <th>Remarks</th>
                 <th>Editar</th>
                 <th>Borrar</th>
@@ -40,16 +46,31 @@
         </thead>
         <tbody>
             ";
-    foreach ($resources as $res) {
-                echo "<tr>
-                <td>".$res['idResource']."</td>
-                <td>".$res['idUser']."</td>
-                <td>".$res['idTimeSlot']."</td>
-                <td>".$res['date']."</td>
-                <td>".$res['remarks']."</td>
-                <td> <a href='".$ruta_Resources_Control_Update."".$res['idResource']."'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
-                <td> <a href='".$ruta_Resources_Control."".$res['idResource']."'> <img src='$ruta_Delete'$estilo_Button> </a></t d>
-                </tr>";
+
+    foreach ($reservations as $res) {
+        $idResource = $res['idResource'];
+        $idUser = $res['idUser'];
+        $idTimeSlot = $res['idTimeSlot'];
+        $date = $res['date'];
+        $remarks = $res['remarks'];
+                
+        $resourceName = Resource::getName($idResource);
+        $usernameUser = User::getName($idUser);
+        $timeslotDay = TimeSlot::getDay($idTimeSlot);
+        $timeslotStart = TimeSlot::getStart($idTimeSlot);
+        $timeslotEnd = TimeSlot::getEnd($idTimeSlot);
+
+
+        echo "<tr>
+        <td>$resourceName</td>
+        <td>$usernameUser</td>
+        <td>$timeslotDay</td>
+        <td>$timeslotStart</td>
+        <td>$timeslotEnd</td>
+        <td>$remarks</td>
+        <td> <a href='".$ruta_Resources_Control_Update."".$res['idResource']."'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
+        <td> <a href='".$ruta_Resources_Control."".$res['idResource']."'> <img src='$ruta_Delete'$estilo_Button> </a></t d>
+        </tr>";
     }
     echo "</table>";
     echo "<br><br><br>";

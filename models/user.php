@@ -72,8 +72,15 @@ class User
     }
 
     public static function get($idUser) {
-        $user = DB::dataQuery("SELECT * FROM users WHERE idUser = '$idUser'");        
+        $result = DB::dataQuery("SELECT * FROM users WHERE idUser = '$idUser'");        
         return $user;
+    }
+
+    public static function getName($idUser) {
+        $result = DB::dataQuery("SELECT username FROM users WHERE idUser = '$idUser'");
+        foreach ($result as $username) {
+            return $username["username"];
+        }
     }
 
     public static function deleteID(){
@@ -95,6 +102,24 @@ class User
         }else{
             return false;
         }
+    }
+
+    /**
+     * Inserta en la Base de Datos un recurso en la tabla recursos
+     */
+    public static function insert(){
+        $username = $_REQUEST["username"];
+        $password = $_REQUEST["password"];
+        $realname = $_REQUEST["realname"];
+
+        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
+        //printf("Aqui viene el user: ".$idUser."<br>");
+        echo "INSERT INTO users (username, password, realname)
+        VALUES (username='$username', password='$password', realname='$realname'')";
+        
+        $result = DB::dataManipulation("INSERT INTO users (username, password, realname)
+        VALUES ('$username','$password','$realname')");
+        return $result;
     }
 
     /**

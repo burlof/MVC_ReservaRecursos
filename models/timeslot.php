@@ -32,6 +32,32 @@ include_once("db.php");
         return $result;
     }
 
+    public static function get($idTimeSlot){
+        $result = DB::dataQuery("SELECT * FROM timeslots where idTimeSlot=$idTimeSlot");
+        return $result;
+    }
+
+    public static function getDay($idTimeSlot){
+        $result = DB::dataQuery("SELECT dayOfWeek FROM timeslots where idTimeSlot=$idTimeSlot");
+        foreach ($result as $dayOfWeek) {
+            return $dayOfWeek["dayOfWeek"];
+        }
+    }
+
+    public static function getStart($idTimeSlot){
+        $result = DB::dataQuery("SELECT startTime FROM timeslots where idTimeSlot=$idTimeSlot");
+        foreach ($result as $startTime) {
+            return $startTime["startTime"];
+        }
+    }
+
+    public static function getEnd($idTimeSlot){
+        $result = DB::dataQuery("SELECT endTime FROM timeslots where idTimeSlot=$idTimeSlot");
+        foreach ($result as $endTime) {
+            return $endTime["endTime"];
+        }
+    }
+
     public static function deleteID(){
         $idTimeSlot = $_REQUEST["idTimeSlot"];
         //printf("Aqui viene el request: ".$_REQUEST["idTimeSlot"]."<br>");

@@ -54,7 +54,7 @@ class ResourcesControl{
     }
 
     /**
-     * Miestra una nueva vista para insertar recursos en la base de datos
+     * Muestra una nueva vista para insertar recursos en la base de datos
      */
     public function showInsert()
     {

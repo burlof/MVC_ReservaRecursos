@@ -14,24 +14,22 @@
 
     echo "<a href='index.php?controller=UsersControl&action=showMenu'>Volver al Menú</a><br>";
     echo "<br><br>";
-    echo "<a href='index.php?controller=ResourcesControl&action=selectResources'>Volver a Recursos</a><br>";
+    echo "<a href='index.php?controller=UsersControl&action=selectUsers'>Volver a Usuarios</a><br>";
     echo "<br><br>";
 
-    echo "<h2>INSERCIÓN DE RECURSO</h2>
+    echo "<h2>INSERCIÓN DE USUARIO</h2>
     
     <form action='index.php' method='GET'>
-    <input type='hidden' name='controller' value='ResourcesControl'>
-    <input type='hidden' name='action' value='insertResources'>";
+    <input type='hidden' name='controller' value='UsersControl'>
+    <input type='hidden' name='action' value='insertUsers'>";
 
     //echo "<label> ID: </label><input type='text' name='idResource' placeholder='ID'><br>";
 
-    echo "<label> Name: </label><input type='text' name='name' placeholder='Nombre'><br>
+    echo "<label> Username: </label><input type='text' name='username' placeholder='Username'><br>
 
-    <label> Description: </label><input type='text' name='description' placeholder='Descripción'><br>
+    <label> Password: </label><input type='text' name='password' placeholder='Contraseña'><br>
 
-    <label> Location: </label><input type='text' name='location' placeholder='Ubicación'><br>
-
-    <label> Image: </label><input type='text' name='image' placeholder='Ruta Imagen'><br>
+    <label> Realname: </label><input type='text' name='realname' placeholder='Nombre Real'><br>
     
     <button type='submit'>Aceptar</button>
 

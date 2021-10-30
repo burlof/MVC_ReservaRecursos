@@ -18,6 +18,13 @@ include_once("db.php");
         return $resource;
     }
 
+    public static function getName($idResource) {
+        $resource = DB::dataQuery("SELECT name FROM resources WHERE idResource = '$idResource'");     
+        foreach ($resource as $name) {
+            return $name["name"];
+        }
+    }
+
     /**
      * Elimina en la Base de Datos un recurso de la tabla recursos por su id
      */
@@ -47,7 +54,6 @@ include_once("db.php");
      * Inserta en la Base de Datos un recurso en la tabla recursos
      */
     public static function insert(){
-        $idResource = $_REQUEST["idResource"];
         $name = $_REQUEST["name"];
         $description = $_REQUEST["description"];
         $location = $_REQUEST["location"];
@@ -55,11 +61,11 @@ include_once("db.php");
 
         //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
         //printf("Aqui viene el user: ".$idUser."<br>");
-        echo "INSERT INTO resources 
-        VALUES idResource='$idResource', name='$name', description='$description', location='$location', image='$image' ";
+        echo "INSERT INTO resources (name, description, location, image)
+        VALUES (idResource='$idResource', name='$name', description='$description', location='$location', image='$image')";
         
-        $result = DB::dataManipulation("INSERT INTO resources 
-        VALUES idResource='$idResource', name='$name', description='$description', location='$location', image='$image'");
+        $result = DB::dataManipulation("INSERT INTO resources (name, description, location, image)
+        VALUES ('$name','$description','$location','$image')");
         return $result;
     }
 
