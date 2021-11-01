@@ -37,6 +37,13 @@ include_once("db.php");
         return $result;
     }
 
+    public static function getAllTimeSlots(){
+        $result = DB::dataQuery("SELECT * FROM timeslots");
+        foreach ($result as $timeslot) {
+            echo "<option value=".$timeslot['idTimeSlot']."> Dia: ".$timeslot['dayOfWeek']. " De ". $timeslot['startTime'] ." a ". $timeslot['endTime']."</option>";
+        }
+    }
+
     public static function getDay($idTimeSlot){
         $result = DB::dataQuery("SELECT dayOfWeek FROM timeslots where idTimeSlot=$idTimeSlot");
         foreach ($result as $dayOfWeek) {

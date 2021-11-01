@@ -11,6 +11,7 @@ class UsersControl{
 
     public function __construct(){
         $this->view = new View(); // Vistas
+        $this->user = new User(); //Usuarios
         DB::createConnection(); 
     }
 
@@ -102,21 +103,21 @@ class UsersControl{
     {
 
         // Validación del formulario
-        if (Security::filter($_REQUEST['email']) == "" || Security::filter($_REQUEST['pass']) == "") {
+        if (Security::filter($_REQUEST['username']) == "" || Security::filter($_REQUEST['password']) == "") {
             // Algún campo del formulario viene vacío: volvemos a mostrar el login
             $data['errorMsg'] = "El email y la contraseña son obligatorios";
             $this->view->show("loginForm", $data);
         }
         else {
             // Hemos pasado la validación del formulario: vamos a procesarlo
-            $email = Security::filter($_REQUEST['email']);
-            $pass = Security::filter($_REQUEST['pass']);
-            $userData = $this->user->checkLogin($email, $pass);
+            $username = Security::filter($_REQUEST['username']);
+            $password = Security::filter($_REQUEST['password']);
+            $userData = $this->user->checkLogin($username, $password);
 
             if ($userData!=null) {
                 // Login correcto: creamos la sesión y pedimos al usuario que elija su rol
-                Security::createSession($userData['id']);
-                $this->SelectUserRolForm();
+                //Security::createSession($userData['id']);
+                $this->view->show('reservations/showAllReservations');
             }
             else {
                 $data['errorMsg'] = "Usuario o contraseña incorrectos";

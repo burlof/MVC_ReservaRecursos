@@ -11,16 +11,16 @@ class ReservationsControl{
 
     public function __construct(){
         $this->view = new View(); // Vistas
+        $this->reservation = new Reservation(); //Reservas
         DB::createConnection(); 
     }
 
-     /**
+    /**
      * Muestra una lista de todos los recursos de la base de datos
      */
-    public function selectReservations($text = null)
+    public function selectReservations()
     {
         $data['reservations'] = Reservation::getAll();
-        if ($text != null) $data['text'] = $text;
         $this->view->show("reservations/showAllReservations", $data);
     }
 
@@ -29,29 +29,57 @@ class ReservationsControl{
      * Elimina un recurso por su id de la base de datos
      */
     public function deleteReservations(){
-        $hasReservations = Reservation::hasReservations();
-        $text = "";
-        if ($hasReservations) {
-            $text = "No puedes borrar ese recurso porque tiene reservas. ";
-        }
         $result = Reservation::deleteID();
-        if ($result == 0) {
-            $text = $text . "Ha fallado el borrado";
-        } else {
-            $text = $text . "Borrado con éxito";
-        }
-        $this->selectReservations($text);
+        $this->selectReservations();
+    }
+
+
+    /**
+     * Elimina un recurso por su id de la base de datos
+     */
+    public function deleteReservationes(){
+        $idReservation = $_REQUEST['idReservation'];
+        $this->reservation->deleteID($idReservation);
+        $this->view->show("reservations/showAllReservations");
     }
 
     /**
      * Actualiza/Modifica un recurso por su id de la base de datos
      */
+    /*
     public function updateReservations(){
 
         $data['reservations'] = Reservation::getAll();
         $this->view->show("reservations/updateReservations", $data);
+    }*/
+
+    /**
+     * Muestra una nueva vista para insertar recursos en la base de datos
+     */
+    public function showInsert()
+    {
+        $this->view->show("reservations/addReservations");
     }
 
+    /**
+     * Inserta un nuevo recurso en la base de datos
+     */
+    public function insertReservations(){
+        $idResource = $_REQUEST["idResource"];
+        $idUser = $_REQUEST["idUser"];
+        $idTimeSlot = $_REQUEST["idTimeSlot"];
+        $remarks = $_REQUEST["remarks"];
+
+        $disponible = Reservation::disponible($idResource, $idTimeSlot);
+        if($disponible){
+            $this->reservation->insert($idResource, $idUser, $idTimeSlot, $remarks);
+            $this->view->show("reservations/showAllReservations");
+        }else{
+            $data['errorMsg'] = "Ya existe una reserva con este recurso a la misma hora";
+            $this->view->show("reservations/addReservations", $data);
+        }
+        
+    }
 
 
 

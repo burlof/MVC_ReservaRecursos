@@ -22,13 +22,15 @@ class User
      * @param String $pass La contraseña del usuario que se quiere comprobar
      * @return User $usuario Si el usuario existe, devuelve un array con todos los campos del usuario en su interior. Si no, devuelve un objeto null
      */
-    public function checkLogin($email, $pass)
+    public function checkLogin($username, $password)
     {
-       $result = DB::dataQuery("SELECT * FROM users WHERE email = '$email' AND password = '$pass'");
-       if (count($result) > 0)
-            return $result[0];
-        else
-            return null;
+       $result = DB::dataQuery("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+       if (count($result) > 0){
+           Security::createSession($result[0]['idUser']);
+           return $result[0];
+       }else{
+           return null;
+       }
     }
 
     /**
@@ -48,24 +50,6 @@ class User
               return null;
     }
 
-    /**
-     * Busca en la base de datos los permisos asociados a un rol
-     * @param integer $idRol El id del rol
-     * @return array $resultArray Un array con la lista de permisos asociados al rol, o null si el rol no existe o no tiene permisos asociados
-     */
-    public function getUserPermissions($idRol)
-    {
-        $resultArray = array();
-        $result = DB::dataQuery("SELECT permissions.* FROM permissions 
-                                            INNER JOIN `permissions-roles` ON permissions.id = `permissions-roles`.idPermission 
-                                            WHERE `permissions-roles`.idRol = '$idRol'");
-        if (count($result) > 0)
-            return $result;
-        else
-            return null;
-
-    }
-
     public static function getAll(){
         $result = DB::dataQuery("SELECT * FROM users");
         return $result;
@@ -80,6 +64,13 @@ class User
         $result = DB::dataQuery("SELECT username FROM users WHERE idUser = '$idUser'");
         foreach ($result as $username) {
             return $username["username"];
+        }
+    }
+
+    public static function getAllUsers(){
+        $result = DB::dataQuery("SELECT * FROM users");
+        foreach ($result as $user) {
+            echo "<option value='".$user['idUser']."'>".$user['username']."</option>";
         }
     }
 

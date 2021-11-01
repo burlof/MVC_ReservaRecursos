@@ -25,6 +25,13 @@ include_once("db.php");
         }
     }
 
+    public static function getAllResources(){
+        $result = DB::dataQuery("SELECT * FROM resources");
+        foreach ($result as $resource) {
+            echo "<option value=".$resource['idResource'].">".$resource['name']."</option>";
+        }
+    }
+
     /**
      * Elimina en la Base de Datos un recurso de la tabla recursos por su id
      */

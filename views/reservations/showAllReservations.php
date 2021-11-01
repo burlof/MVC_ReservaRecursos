@@ -2,14 +2,16 @@
     include_once ("models/resource.php");
     include_once ("models/user.php");
     include_once ("models/timeslot.php");
+    //include_once ("models/reservations.php");
 
 
-    $reservations = $data["reservations"];
+    //$reservations = $data["reservations"];
+    $reservations = Reservation::getAll();
 
     //VARIABLES
-    $ruta_Resources_Control="index.php?controller=ReservationsControl&action=deleteResources&idResource=";
-    $ruta_Resources_Control_Update="index.php?controller=ReservationsControl&action=updateResources&idResource=";
-    $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
+    $ruta_Reservations_Control="index.php?controller=ReservationsControl&action=deleteReservations&idReservation=";
+    $ruta_Reservations_Control_Update="index.php?controller=ReservationsControl&action=updateReservations&idResource=";
+    $ruta_Reservations_Control_Insert="index.php?controller=ReservationsControl&action=showInsert";
     $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
     $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
     $ruta_Add = "http://localhost/ReservaRecursos/assets/images/buttons/add.png";
@@ -25,8 +27,8 @@
     echo "<a href='index.php?controller=UsersControl&action=showMenu'>Volver al Menú</a><br>";
     echo "<br><br>";
 
-    /*AÑADIR RECURSOS */
-    echo "<a href='index.php?action=showMenu'> <img src='$ruta_Add'$estilo_Button> </a><br>";
+    /*AÑADIR RESERVAS */
+    echo "<a href='".$ruta_Reservations_Control_Insert."'>  Añadir <img src='$ruta_Add'$estilo_Button></a><br>";
 
     /*TÍTULO VISTA */
     echo "<h1>VISTA DE TODAS LAS RESERVAS</h1>
@@ -48,6 +50,7 @@
             ";
 
     foreach ($reservations as $res) {
+        $idReservation = $res['idReservation'];
         $idResource = $res['idResource'];
         $idUser = $res['idUser'];
         $idTimeSlot = $res['idTimeSlot'];
@@ -68,8 +71,8 @@
         <td>$timeslotStart</td>
         <td>$timeslotEnd</td>
         <td>$remarks</td>
-        <td> <a href='".$ruta_Resources_Control_Update."".$res['idResource']."'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
-        <td> <a href='".$ruta_Resources_Control."".$res['idResource']."'> <img src='$ruta_Delete'$estilo_Button> </a></t d>
+        <td> <a href='".$ruta_Reservations_Control_Update."".$res['idReservation']."'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
+        <td> <a href='".$ruta_Reservations_Control."".$res['idReservation']."'> <img src='$ruta_Delete'$estilo_Button> </a></t d>
         </tr>";
     }
     echo "</table>";

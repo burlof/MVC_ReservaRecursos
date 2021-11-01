@@ -11,11 +11,12 @@
         Esta es la cabecera de mi web
     </div>
     <div class='nav'>
-        Esta es la barra de navegación<br><br>
+        
         <?php
             if (Security::thereIsSession()) {
-                echo "User id: ".Security::getUserId()."<br>";
+                echo "ID Usuario: ".Security::getUserId()."<br>";
             }
         ?>
+        Esta es la barra de navegación<br><br>
     </div>
     <div class='container'>

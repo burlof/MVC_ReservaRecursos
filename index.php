@@ -26,7 +26,7 @@ if (!isset($_REQUEST['action'])) {
     //$action = "selectResources";
     //$action = "selectTimeSlots";
     //$action = "selectUsers";
-    $action = "showMenu";
+    $action = "showLoginForm";
 } else {
 // Si la hay. La recuperamos.
     $action = $_REQUEST['action'];
