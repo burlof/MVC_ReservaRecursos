@@ -9,6 +9,9 @@ class ResourcesControl{
     
     private $view;
 
+    /**
+     * Contructor del controlador de recursos
+     */
     public function __construct(){
         $this->view = new View(); // Vistas
         DB::createConnection(); 
@@ -78,9 +81,6 @@ class ResourcesControl{
         $data['resources'] = Resource::getAll();
         $this->view->show("resources/showAllResources", $data);
     }
-
-
-
 
 
 

@@ -2,22 +2,30 @@
 
 include_once("db.php");
 
-    class Resource
-    {
+class Resource
+{
 
     /**
-     * Recupera de la Base de Datos todos los datos de la tabla recursos
+     * Busca en la Base de Datos todos los datos de la tabla recursos
      */
     public static function getAll(){
         $result = DB::dataQuery("SELECT * FROM resources");
         return $result;
     }
 
+    /**
+     * Busca en la base de datos la lista de todos los recursos que coincidan con el id del recurso pasado por parámetros
+     * @param integer $idResource El id del recurso
+     */
     public static function get($idResource) {
         $resource = DB::dataQuery("SELECT * FROM resources WHERE idResource = '$idResource'");        
         return $resource;
     }
 
+    /**
+     * Busca en la base de datos la lista de nombres de todos los recursos que coincidan con el id del recurso pasado por parámetros
+     * @param integer $idResource El id del recurso
+     */
     public static function getName($idResource) {
         $resource = DB::dataQuery("SELECT name FROM resources WHERE idResource = '$idResource'");     
         foreach ($resource as $name) {
@@ -25,6 +33,9 @@ include_once("db.php");
         }
     }
 
+    /**
+     * Busca en la base de datos la lista de todos los recursos recorriendo un array
+     */
     public static function getAllResources(){
         $result = DB::dataQuery("SELECT * FROM resources");
         foreach ($result as $resource) {
@@ -37,9 +48,7 @@ include_once("db.php");
      */
     public static function deleteID(){
         $idResource = $_REQUEST["idResource"];
-        //printf("Aqui viene el request: ".$_REQUEST["idResource"]."<br>");
-        //printf("Aqui viene el recurso: ".$idResource);
-        //echo "DELETE FROM resources WHERE idResource = '$idResource'";
+
         $result = DB::dataManipulation("DELETE FROM resources WHERE idResource = '$idResource'");
         return $result;
     }
@@ -66,11 +75,6 @@ include_once("db.php");
         $location = $_REQUEST["location"];
         $image = $_REQUEST["image"];
 
-        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
-        //printf("Aqui viene el user: ".$idUser."<br>");
-        echo "INSERT INTO resources (name, description, location, image)
-        VALUES (name='$name', description='$description', location='$location', image='$image')";
-        
         $result = DB::dataManipulation("INSERT INTO resources (name, description, location, image)
         VALUES ('$name','$description','$location','$image')");
         return $result;
@@ -92,16 +96,6 @@ include_once("db.php");
         WHERE idResource = '$idResource'");
         return $result;
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

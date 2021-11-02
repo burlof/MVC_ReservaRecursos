@@ -5,7 +5,6 @@ include_once("db.php");
 class User
 {
 
-
     /**
      * Comprueba si un email y una password pertenecen a algún usuario de la base  de datos.
      * @param String $email El email del usuario que se quiere comprobar
@@ -40,16 +39,27 @@ class User
               return null;
     }
 
+    /**
+     * Busca en la base de datos la lista de todos los usuarios
+     */
     public static function getAll(){
         $result = DB::dataQuery("SELECT * FROM users");
         return $result;
     }
 
+    /**
+     * Busca en la base de datos la lista de todos los usuarios que coincidan con el usuario pasado por parámetros
+     * @param integer $idUser El id del usuario
+     */
     public static function get($idUser) {
         $result = DB::dataQuery("SELECT * FROM users WHERE idUser = '$idUser'");        
         return $user;
     }
 
+    /**
+     * Busca en la base de datos la lista de username de todos los usuarios que coincidan con el usuario pasado por parámetros
+     * @param integer $idUser El id del usuario
+     */
     public static function getName($idUser) {
         $result = DB::dataQuery("SELECT username FROM users WHERE idUser = '$idUser'");
         foreach ($result as $username) {
@@ -57,6 +67,9 @@ class User
         }
     }
 
+    /**
+     * Busca en la base de datos la lista de username de todos los usuarios recorriendo un array
+     */
     public static function getAllUsers(){
         $result = DB::dataQuery("SELECT * FROM users");
         foreach ($result as $user) {
@@ -64,17 +77,19 @@ class User
         }
     }
 
+    /**
+     * Borra en la base de datos el usuario que contenga el valor pasado en $idUser 
+     */
     public static function deleteID(){
         $idUser = $_REQUEST["idUser"];
-        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
-        //printf("Aqui viene el user: ".$idUser);
-        //echo "DELETE FROM users WHERE idUser = '$idUser'";
         $result = DB::dataManipulation("DELETE FROM users WHERE idUser = '$idUser'");
         return $result;
     }
 
 
-    // Mira si un recurso pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+    /**
+     *Comprueba si un usuario pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+     */
     public static function hasReservationsUsers() {
         $idUser = $_REQUEST["idUser"];
         $result = DB::dataQuery("SELECT * FROM reservations WHERE idUser = '$idUser'");
@@ -86,17 +101,12 @@ class User
     }
 
     /**
-     * Inserta en la Base de Datos un recurso en la tabla recursos
+     * Inserta en la Base de Datos un usuario en la tabla usuarios
      */
     public static function insert(){
         $username = $_REQUEST["username"];
         $password = $_REQUEST["password"];
         $realname = $_REQUEST["realname"];
-
-        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
-        //printf("Aqui viene el user: ".$idUser."<br>");
-        echo "INSERT INTO users (username, password, realname)
-        VALUES (username='$username', password='$password', realname='$realname'')";
         
         $result = DB::dataManipulation("INSERT INTO users (username, password, realname)
         VALUES ('$username','$password','$realname')");
@@ -104,19 +114,13 @@ class User
     }
 
     /**
-     * Actualiza en la Base de Datos un recurso de la tabla recursos por su id
+     * Actualiza en la Base de Datos un usuario de la tabla usuarios por su id
      */
     public static function update(){
         $idUser = $_REQUEST["idUser"];
         $username = $_REQUEST["username"];
         $password = $_REQUEST["password"];
         $realname = $_REQUEST["realname"];
-
-        printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
-        printf("Aqui viene el user: ".$idUser."<br>");
-        echo "UPDATE users 
-        SET username='$username', password='$password', realname='$realname'
-        WHERE idUser = '$idUser'";
 
         $result = DB::dataManipulation("UPDATE users 
         SET username='$username', password='$password', realname='$realname'
@@ -125,13 +129,6 @@ class User
     }
 
 
-
-
-
-
-
-
-    
 
 
 }//END CLASS USERS

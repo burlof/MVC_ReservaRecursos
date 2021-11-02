@@ -8,7 +8,11 @@ include_once ("models/user.php");
 class UsersControl{
     
     private $view;
+    private $user;
 
+    /**
+     * Contructor del controlador de usuarios
+     */
     public function __construct(){
         $this->view = new View(); // Vistas
         $this->user = new User(); //Usuarios
@@ -25,7 +29,7 @@ class UsersControl{
 
 
      /**
-     * Muestra una lista de todos los recursos de la base de datos
+     * Muestra una lista de todos los usuarios de la base de datos
      */
     public function selectUsers()
     {
@@ -61,7 +65,7 @@ class UsersControl{
     }
 
     /**
-     * Muestra una nueva vista para insertar recursos en la base de datos
+     * Muestra una nueva vista para insertar usuarios en la base de datos
      */
     public function showInsert()
     {
@@ -69,7 +73,7 @@ class UsersControl{
     }
 
     /**
-     * Inserta un nuevo recurso en la base de datos
+     * Inserta un nuevo usuario en la base de datos
      */
     public function insertUsers(){
         User::insert();
@@ -89,9 +93,9 @@ class UsersControl{
     /**
      * Muestra el formulario de login
      */
-    public function showLoginForm($data)
+    public function showLoginForm()
     {
-        $this->view->show("loginForm", $data);
+        $this->view->show("loginForm");
     }
 
 
@@ -163,8 +167,6 @@ class UsersControl{
         Security::closeSession();
         $this->view->show("loginForm");
     }
-
-
 
 
 

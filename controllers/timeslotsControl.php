@@ -9,13 +9,16 @@ class TimeSlotsControl{
     
     private $view;
 
+    /**
+     * Contructor del controlador de horarios
+     */
     public function __construct(){
         $this->view = new View(); // Vistas
         DB::createConnection(); 
     }
 
      /**
-     * Muestra una lista de todos los recursos de la base de datos
+     * Muestra una lista de todos los horarios de la base de datos
      */
     public function selectTimeSlots()
     {
@@ -24,7 +27,7 @@ class TimeSlotsControl{
     }
 
     /**
-     * Elimina un timeslot por su id de la base de datos
+     * Elimina un horario por su id de la base de datos
      */
     public function deleteTimeSlots(){
         $hasReservations = TimeSlot::hasReservationsTimeSlots();
@@ -51,7 +54,7 @@ class TimeSlotsControl{
     }
 
     /**
-     * Muestra una nueva vista para insertar recursos en la base de datos
+     * Muestra una nueva vista para insertar horarios en la base de datos
      */
     public function showInsert()
     {
@@ -59,7 +62,7 @@ class TimeSlotsControl{
     }
 
     /**
-     * Inserta un nuevo recurso en la base de datos
+     * Inserta un nuevo horario en la base de datos
      */
     public function insertTimeSlots(){
         TimeSlot::insert();
@@ -69,15 +72,13 @@ class TimeSlotsControl{
 
 
     /**
-     * Actualiza/Modifica un recurso por su id de la base de datos
+     * Actualiza/Modifica un horario por su id de la base de datos
      */
     public function updateTimeSlots(){
         TimeSlot::update();
         $data['timeslots'] = TimeSlot::getAll();
         $this->view->show("timeslots/showAllTimeSlots", $data);
     }
-
-
 
 
 

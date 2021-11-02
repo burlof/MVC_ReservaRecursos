@@ -2,41 +2,29 @@
 
 include_once("db.php");
 
-    class TimeSlot
-    {
+class TimeSlot
+{
 
     /**
-     * Constructor de la clase.
-     * Crea una conexión con la base de datos y la asigna a la variable $this->db
+     * Busca en la base de datos la lista de todos los horarios
      */
-    /*
-    public function __construct()
-    {
-       DB::createConnection(); 
-    }
-    */
-
-    /*
-    public function getAll(){
-        $resultArray = array();
-        $result = DB::dataQuery("SELECT * FROM timeslots");
-        if (count($result) > 0)
-            return $result;
-        else
-            return null;
-    }
-    */
-
     public static function getAll(){
         $result = DB::dataQuery("SELECT * FROM timeslots");
         return $result;
     }
 
+    /**
+     * Busca en la base de datos la lista de todos los horarios que coincidan con el id del horario pasado por parámetros
+     * @param integer $idTimeSlot El id del horario
+     */
     public static function get($idTimeSlot){
         $result = DB::dataQuery("SELECT * FROM timeslots where idTimeSlot=$idTimeSlot");
         return $result;
     }
 
+    /**
+     * Busca en la base de datos la lista de todos los horarios recorriendo un array
+     */
     public static function getAllTimeSlots(){
         $result = DB::dataQuery("SELECT * FROM timeslots");
         foreach ($result as $timeslot) {
@@ -44,6 +32,10 @@ include_once("db.php");
         }
     }
 
+    /**
+     * Busca en la base de datos la lista de días de todos los horarios recorriendo un array
+     * @param integer $idTimeSlot El id del horario
+     */
     public static function getDay($idTimeSlot){
         $result = DB::dataQuery("SELECT dayOfWeek FROM timeslots where idTimeSlot=$idTimeSlot");
         foreach ($result as $dayOfWeek) {
@@ -51,6 +43,10 @@ include_once("db.php");
         }
     }
 
+    /**
+     * Busca en la base de datos la lista de fecha inicio de todos los horarios recorriendo un array
+     * @param integer $idTimeSlot El id del horario
+     */
     public static function getStart($idTimeSlot){
         $result = DB::dataQuery("SELECT startTime FROM timeslots where idTimeSlot=$idTimeSlot");
         foreach ($result as $startTime) {
@@ -58,6 +54,10 @@ include_once("db.php");
         }
     }
 
+    /**
+     * Busca en la base de datos la lista de fecha fin de todos los horarios recorriendo un array
+     * @param integer $idTimeSlot El id del horario
+     */
     public static function getEnd($idTimeSlot){
         $result = DB::dataQuery("SELECT endTime FROM timeslots where idTimeSlot=$idTimeSlot");
         foreach ($result as $endTime) {
@@ -65,17 +65,20 @@ include_once("db.php");
         }
     }
 
+    /**
+     * Borra en la base de datos el horario que contenga el valor pasado en $idTimeSlot
+     */
     public static function deleteID(){
         $idTimeSlot = $_REQUEST["idTimeSlot"];
-        //printf("Aqui viene el request: ".$_REQUEST["idTimeSlot"]."<br>");
-        //printf("Aqui viene el timeslot: ".$idTimeSlot);
-        //echo "DELETE FROM timeslots WHERE idTimeSlot = '$idTimeSlot'";
+
         $result = DB::dataManipulation("DELETE FROM timeslots WHERE idTimeSlot = '$idTimeSlot'");
         return $result;
     }
     
 
-    // Mira si un recurso pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+    /**
+     *Comprueba si un horario pasado por la URL tiene reservas. Devuelve true en caso afirmativo o false si no las tiene
+     */
     public static function hasReservationsTimeSlots() {
         $idTimeSlot = $_REQUEST["idTimeSlot"];
         $result = DB::dataQuery("SELECT * FROM timeslots WHERE idTimeSlot = '$idTimeSlot'");
@@ -93,11 +96,6 @@ include_once("db.php");
         $dayOfWeek = $_REQUEST["dayOfWeek"];
         $startTime = $_REQUEST["startTime"];
         $endTime = $_REQUEST["endTime"];
-
-        //printf("Aqui viene el request: ".$_REQUEST["idUser"]."<br>");
-        //printf("Aqui viene el user: ".$idUser."<br>");
-        //echo "INSERT INTO timeslots (name, description, location, image)
-        //VALUES (dayOfWeek='$dayOfWeek', startTime='$startTime', endTime='$endTime')";
         
         $result = DB::dataManipulation("INSERT INTO timeslots (dayOfWeek, startTime, endTime)
         VALUES ('$dayOfWeek','$startTime','$endTime')");
@@ -105,7 +103,7 @@ include_once("db.php");
     }
 
     /**
-     * Actualiza en la Base de Datos un recurso de la tabla recursos por su id
+     * Actualiza en la Base de Datos un horario de la tabla timeslots por su id
      */
     public static function update(){
         $idTimeSlot = $_REQUEST["idTimeSlot"];
@@ -121,17 +119,6 @@ include_once("db.php");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    }//END CLASS RESOURCES
+}//END CLASS RESOURCES
 
 ?>
