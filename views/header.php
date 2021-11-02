@@ -8,15 +8,16 @@
 </head>
 <body>
     <div class='header'>
-        Esta es la cabecera de mi web
+        <h2> RESERVAS DEL MATERIAL ESCOLAR </h2>
     </div>
     <div class='nav'>
         
         <?php
+            /*
             if (Security::thereIsSession()) {
                 echo "ID Usuario: ".Security::getUserId()."<br>";
             }
+            */
         ?>
-        Esta es la barra de navegación<br><br>
     </div>
     <div class='container'>

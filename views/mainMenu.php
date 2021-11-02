@@ -1,7 +1,10 @@
 <?php
 echo "<br><b><u>Menú principal</u></b><br>";
 echo "<br>";
-echo "Bienvenido, @nombre de usuario<br>";
+echo "Bienvenido, ";
+    if (Security::thereIsSession()) {
+        echo "Usuario ".Security::getUserId()."<br>";
+    }
 echo "<br><br><br>";
 echo "<b>MENÚ DE OPCIONES:</b><br>";
 echo "<br>";
