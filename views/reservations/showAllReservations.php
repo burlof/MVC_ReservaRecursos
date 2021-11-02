@@ -90,7 +90,7 @@
         <td>$timeslotEnd</td>
         <td>$date</td>
         <td>$remarks</td>
-        <td> <a href='".$ruta_Reservations_Control_Update."".$res['idReservation']."'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
+        <td> <a href='#'> <img src='$ruta_Editar'$estilo_Button> </a> </td>
         <td> <a href='".$ruta_Reservations_Control."".$res['idReservation']."'> <img src='$ruta_Delete'$estilo_Button> </a></t d>
         </tr>";
     }

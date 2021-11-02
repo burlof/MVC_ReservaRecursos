@@ -53,7 +53,7 @@ class User
      */
     public static function get($idUser) {
         $result = DB::dataQuery("SELECT * FROM users WHERE idUser = '$idUser'");        
-        return $user;
+        return $result;
     }
 
     /**
