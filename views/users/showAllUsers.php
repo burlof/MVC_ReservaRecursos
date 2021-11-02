@@ -6,9 +6,9 @@
     $ruta_Users_Control="index.php?controller=UsersControl&action=deleteUsers&idUser=";
     $ruta_Users_Control_Update="index.php?controller=UsersControl&action=edit&idUser=";
     $ruta_Users_Control_Insert="index.php?controller=UsersControl&action=showInsert";
-    $ruta_Delete = "/assets/images/buttons/delete.png";
-    $ruta_Editar = "/assets/images/buttons/edit.png";
-    $ruta_Add = "/assets/images/buttons/add.png";
+    $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
+    $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
+    $ruta_Add = "http://localhost/ReservaRecursos/assets/images/buttons/add.png";
     $estilo_Button = "style=width:25px;height:25px;";
 
     if (isset($data['text'])) {

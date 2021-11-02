@@ -3,8 +3,8 @@
     $res = $data["users"][0];
 
     //VARIABLES
-    $ruta_Editar = "/assets/images/buttons/edit.png";
-    $ruta_Imagen_Recurso = "/assets/images/resources/";
+    $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
+    $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
     $estilo_Recurso = "style=width:60px;height:60px;";
     $estilo_Button = "style=width:25px;height:25px;";
     

@@ -5,10 +5,10 @@
     $ruta_Resources_Control="index.php?controller=ResourcesControl&action=deleteResources&idResource=";
     $ruta_Resources_Control_Update="index.php?controller=ResourcesControl&action=edit&idResource=";
     $ruta_Resources_Control_Insert="index.php?controller=ResourcesControl&action=showInsert";
-    $ruta_Imagen_Recurso = "/assets/images/resources/";
-    $ruta_Delete = "/assets/images/buttons/delete.png";
-    $ruta_Editar = "/assets/images/buttons/edit.png";
-    $ruta_Add = "/assets/images/buttons/add.png";
+    $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
+    $ruta_Delete = "http://localhost/ReservaRecursos/assets/images/buttons/delete.png";
+    $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
+    $ruta_Add = "http://localhost/ReservaRecursos/assets/images/buttons/add.png";
     $estilo_Recurso = "style=width:60px;height:60px;";
     $estilo_Button = "style=width:25px;height:25px;";
     

@@ -3,7 +3,7 @@
     //$res = $data["resources"][0];
 
     //VARIABLES
-    $ruta_Imagen_Recurso = "/assets/images/resources/";
+    $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
     $estilo_Recurso = "style=width:60px;height:60px;";
     $estilo_Button = "style=width:25px;height:25px;";
     
