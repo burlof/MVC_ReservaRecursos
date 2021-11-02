@@ -89,9 +89,9 @@ class UsersControl{
     /**
      * Muestra el formulario de login
      */
-    public function showLoginForm()
+    public function showLoginForm($data)
     {
-        $this->view->show("loginForm");
+        $this->view->show("loginForm", $data);
     }
 
 

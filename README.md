@@ -25,7 +25,7 @@
 
 ```La URL para utilizar este proyecto es la siguiente:```
 
-> http://localhost/ReservaRecursos/index.php
+> /index.php
 
 ### Este proyecto está construido con 🛠️ 
 

@@ -37,8 +37,8 @@ include_once("db.php");
         return $result;
     }
 
-    public static function disponible($idResource, $idTimeSlot){
-        $result = DB::dataQuery("SELECT * FROM reservations WHERE idResource= '$idResource' AND idTimeSlot='$idTimeSlot'");
+    public static function disponible($idResource, $idTimeSlot, $date){
+        $result = DB::dataQuery("SELECT * FROM reservations WHERE idResource= '$idResource' AND idTimeSlot='$idTimeSlot' AND date='$date'");
 
         if(empty($result)){
             $disponible=true;

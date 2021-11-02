@@ -68,11 +68,12 @@ class ReservationsControl{
         $idResource = $_REQUEST["idResource"];
         $idUser = $_REQUEST["idUser"];
         $idTimeSlot = $_REQUEST["idTimeSlot"];
+        $date = $_REQUEST["date"];
         $remarks = $_REQUEST["remarks"];
 
-        $disponible = Reservation::disponible($idResource, $idTimeSlot);
+        $disponible = Reservation::disponible($idResource, $idTimeSlot, $date);
         if($disponible){
-            $this->reservation->insert($idResource, $idUser, $idTimeSlot, $remarks);
+            $this->reservation->insert($idResource, $idUser, $idTimeSlot, $date, $remarks);
             $this->view->show("reservations/showAllReservations");
         }else{
             $data['errorMsg'] = "Ya existe una reserva con este recurso a la misma hora";

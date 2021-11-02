@@ -5,16 +5,6 @@ include_once("db.php");
 class User
 {
 
-    /**
-     * Constructor de la clase.
-     * Crea una conexión con la base de datos y la asigna a la variable $this->db
-     */
-    /*
-    public function __construct()
-    {
-       DB::createConnection(); 
-    }
-    */
 
     /**
      * Comprueba si un email y una password pertenecen a algún usuario de la base  de datos.

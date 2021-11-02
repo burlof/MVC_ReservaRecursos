@@ -3,14 +3,31 @@
     $res = $data["timeslots"][0];
 
     //VARIABLES
-    $ruta_Editar = "http://localhost/ReservaRecursos/assets/images/buttons/edit.png";
-    $ruta_Imagen_Recurso = "http://localhost/ReservaRecursos/assets/images/resources/";
+    $ruta_Editar = "/assets/images/buttons/edit.png";
+    $ruta_Imagen_Recurso = "/assets/images/resources/";
     $estilo_Recurso = "style=width:60px;height:60px;";
     $estilo_Button = "style=width:25px;height:25px;";
     
     if (isset($data['text'])) {
         echo "<div class='error'>".$data['text']."</div>";
     }
+
+    /*BARRA DE NAVEGACIÓN */
+    echo "<header>
+    <nav>
+    <ul class='ul'>";
+
+    //echo "<img src='/assets/images/resources/logo.png' style=width:50px;height:50px;>";
+    echo "<span class='subencabezado'>RESERVA DE RECURSOS</span></a>";
+    echo "<li class='li'><a class='a-menu' href='index.php?controller=ResourcesControl&action=selectResources'>Recursos</a></li>";
+    echo "<li class='li'><a class='a-menu' href='index.php?controller=TimeSlotsControl&action=selectTimeSlots'>Tramos Horarios</a></li>";
+    echo "<li class='li'><a class='a-menu' href='index.php?controller=UsersControl&action=selectUsers'>Usuarios</a></li>";
+    echo "<li class='li'><a class='a-menu' href='index.php?controller=ReservationsControl&action=selectReservations'>Reservas</a></li>";
+    echo "<li class='li'><a class='a-menu'href='index.php?controller=UsersControl&action=closeSession'>Cerrar sesión</a></li>";
+
+    echo "</ul>
+    </nav>
+    </header>";
 
 
     echo "<a href='index.php?controller=UsersControl&action=showMenu'>Volver al Menú</a><br>";
